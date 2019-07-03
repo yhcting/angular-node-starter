@@ -1,0 +1,8 @@
+<main>
+  <div *ngIf="initialized; else waitingBlock">
+    <router-outlet></router-outlet>
+  </div>
+  <ng-template #waitingBlock>
+    <h1>{{waitingMsg}}</h1>
+  </ng-template>
+</main>

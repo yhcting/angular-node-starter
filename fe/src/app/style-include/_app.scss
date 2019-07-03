@@ -1,0 +1,10 @@
+/* Common(shared) scss has 'app-' prefix */
+
+/* To use material color map */
+@import '~@angular/material/theming';
+@import './inline/word';
+@import './func/asset';
+@import './var/layout';
+
+@mixin app-theme() {
+}

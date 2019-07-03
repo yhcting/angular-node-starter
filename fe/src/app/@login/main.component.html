@@ -1,0 +1,60 @@
+<form #$form="ngForm"
+  *ngIf="form"
+  (ngSubmit)="uiOnLoginSubmit()"
+  >
+  <mat-card>
+    <mat-card-header>
+      <div mat-card-avatar>
+        <button mat-mini-fab
+          color="primary"
+          type="submit"
+          [disabled]="$form.invalid || (inProgress$ | async)"
+          >
+          <mat-icon>send</mat-icon>
+        </button>
+      </div>
+      <mat-card-title>Login</mat-card-title>
+      <mat-card-subtitle>Login</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="app-form-short">
+        <mat-form-field class="field">
+          <input matInput
+            name="inId"
+            #$inId="ngModel"
+            [(ngModel)]="form.id"
+            placeholder="User id"
+            pattern="^\S+$"
+            required
+            />
+        </mat-form-field>
+        <div class="error">
+          <span [hidden]="$inId.valid">
+            <mat-error>
+              White space is NOT allowed.
+            </mat-error>
+          </span>
+        </div>
+      </div>
+      <div class="app-form-short">
+        <mat-form-field class="field">
+          <input matInput
+            type="password"
+            name="inPassword"
+            #$inPassword="ngModel"
+            [(ngModel)]="form.pw"
+            placeholder="Password"
+            required
+            />
+        </mat-form-field>
+        <div class="error">
+          <span [hidden]="$inPassword.valid">
+            <mat-error>
+              Password is required
+            </mat-error>
+          </span>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</form>

@@ -1,0 +1,10 @@
+{
+    "extends": "./tsconfig",
+    "exclude": [
+        "src/types",
+        "src/test",
+        "**/*.spec.ts",
+        "build",
+        "node_modules"
+    ]
+}

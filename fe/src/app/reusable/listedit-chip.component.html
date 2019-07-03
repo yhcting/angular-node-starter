@@ -1,0 +1,65 @@
+<ng-template [ngIf]="!editable" [ngIfElse]="$edit">
+  <mat-chip-list #chipList>
+    <mat-chip *ngFor="let $li of listItems"
+      [selectable]="false"
+      [removable]="false"
+      (click)="uiOnChipClick($li)"
+      >
+      {{$li.v}}
+    </mat-chip>
+  </mat-chip-list>
+</ng-template>
+<ng-template #$edit>
+  <ng-template [ngIf]="0 === options.length" [ngIfElse]="$inOpt">
+    <mat-form-field class="chipFormField">
+      <mat-chip-list #$inputChipList>
+        <mat-chip *ngFor="let $li of listItems"
+          [selectable]="false"
+          [removable]="true"
+          (removed)="uiOnRemove($li)"
+          (click)="uiOnChipClick($li)"
+          >
+          {{$li.v}}
+          <mat-icon matChipRemove>cancel</mat-icon>
+        </mat-chip>
+        <input
+          [placeholder]="'New ' + itemName"
+          name="inField"
+          #$inField="ngModel"
+          [ngModel]="newItem"
+          (ngModelChange)="newItem = $event"
+          [appCustomValidator]="itemValidator"
+          [matChipInputFor]="$inputChipList"
+          [matChipInputSeparatorKeyCodes]="$inField.valid ? separatorKeysCodes : []"
+          [matChipInputAddOnBlur]="false"
+          (matChipInputTokenEnd)="uiOnAdd($event)"
+          >
+        <mat-error *ngIf="!$inField.valid && $inField.errors.newItem">
+          {{ $inField.errors.newItem }}
+        </mat-error>
+      </mat-chip-list>
+    </mat-form-field>
+  </ng-template>
+  <ng-template #$inOpt>
+    <mat-chip-list>
+      <mat-chip *ngFor="let $li of listItems"
+        [selectable]="false"
+        [removable]="true"
+        (removed)="uiOnRemove($li)"
+        (click)="uiOnChipClick($li)"
+        >
+        {{$li.v}}
+        <mat-icon matChipRemove>cancel</mat-icon>
+      </mat-chip>
+    </mat-chip-list>
+    <mat-select *ngIf="availableOpts && 0 < availableOpts.length"
+      class="select"
+      [placeholder]="'Select New ' + itemName"
+      (selectionChange)="uiOnSelectNewItem($event)"
+      >
+      <mat-option *ngFor="let $opt of availableOpts" [value]="$opt">
+        {{ $opt }}
+      </mat-option>
+    </mat-select>
+  </ng-template>
+</ng-template>

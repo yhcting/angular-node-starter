@@ -1,0 +1,25 @@
+<h1 mat-dialog-title>
+  <mat-icon>warning</mat-icon>
+  {{ data.title }}
+</h1>
+<mat-progress-bar *ngIf="inProgress$ | async"
+  mode="indeterminate"
+  >
+</mat-progress-bar>
+<mat-dialog-content>
+  <div [innerHTML]="data.message"></div>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button *ngIf="data.cancellable"
+    mat-button
+    cdkFocusInitial
+    (click)="uiOnCancel()"
+    >
+    Cancel
+  </button>
+  <button mat-button
+    (click)="uiOnConfirm()"
+    >
+    Confirm
+  </button>
+</mat-dialog-actions>

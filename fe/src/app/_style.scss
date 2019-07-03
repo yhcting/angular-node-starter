@@ -1,0 +1,21 @@
+/* Application global style. They should have 'app-' prefix */
+@import 'app';
+
+/*
+* {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  // font-family: monospace !important;
+}
+*/
+
+.mat-tooltip {
+  @include app-i-word-break-all;
+  font-size: 0.8em !important;
+  white-space: pre-wrap !important;
+  // max-width: 800px !important;
+  // color: yellow !important;
+}
+
+@include app-theme();

@@ -1,0 +1,22 @@
+# Compiled output
+/build/
+
+# Dependencies
+/node_modules/
+
+# Auto-generated
+/typedoc/
+/coverage/
+
+# Test
+/temp/
+/tmpbak/
+
+# Profiling
+/isolate-*
+/prof/
+
+.*
+!.editorconfig
+!.gitignore
+!.vscode

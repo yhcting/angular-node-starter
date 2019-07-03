@@ -1,0 +1,14 @@
+// Convention: name starts with 'f-'(function)
+
+@function app-f-ijpg($name) {
+  @return url('/assets/images/' + $name + '.jpg');
+}
+
+@function app-f-ipng($name) {
+  @return url('/assets/images/' + $name + '.png');
+}
+
+@function app-f-isvg($name) {
+  @return url('/assets/images/' + $name + '.svg');
+}
+
